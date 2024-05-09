@@ -11,6 +11,7 @@ import PostCard from "./PostCard";
 import AuthLayout from "./AuthLayout";
 import Input from "./Input";
 import Select from "./Select";
+import Button from "./Button";
 
 export {
   Header,
@@ -26,4 +27,5 @@ export {
   AuthLayout,
   Input,
   Select,
+  Button,
 };
