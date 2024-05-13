@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import conf from "../conf/conf";
 import { Client, Account, ID } from "appwrite";
 
@@ -7,7 +8,7 @@ export class AuthService {
 
   constructor() {
     this.client
-      .setEndpoint(conf.appwriteProjectId)
+      .setEndpoint(conf.appwriteUrl)
       .setProject(conf.appwriteProjectId);
     this.account = new Account(this.client);
   }
@@ -20,8 +21,7 @@ export class AuthService {
         name
       );
       if (userAccount) {
-        
-        return this.account, login({ email, password }); //User gets logged in automatically after signing up
+        return this.account.login({ email, password }); //User gets logged in automatically after signing up
       } else {
         return userAccount;
       }
