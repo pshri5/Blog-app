@@ -21,7 +21,7 @@ export class AuthService {
         name
       );
       if (userAccount) {
-        return this.account.login({ email, password }); //User gets logged in automatically after signing up
+        return this.login({ email, password }); //User gets logged in automatically after signing up
       } else {
         return userAccount;
       }
