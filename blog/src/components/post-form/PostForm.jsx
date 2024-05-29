@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Input, RTE, Select } from "..";
+import { Button, Input, RTE, Select } from "../index";
 import dbService from "../../appwrite/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -21,9 +21,13 @@ export default function PostForm({ post }) {
 
   const submit = async (data) => {
     if (post) {
-      const file = data.image[0]
-        ? await dbService.uploadFile(data.image[0])
-        : null;
+      try {
+        const file = data.image[0]
+          ? await dbService.uploadFile(data.image[0])
+          : null;
+      } catch (error) {
+        console.log("Submit function error", error);
+      }
 
       if (file) {
         dbService.deleteFile(post.featuredImage);
